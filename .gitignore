@@ -1,0 +1,26 @@
+# .NET / Visual Studio
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.csproj.user
+
+# EF Migrations snapshots (optional to keep)
+# **/Migrations/*.Designer.cs
+
+# Secrets
+**/appsettings.*.local.json
+secrets.json
+
+# Node / Angular
+frontend/node_modules/
+frontend/dist/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+**/docker-data/
