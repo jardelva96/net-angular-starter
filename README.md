@@ -12,7 +12,7 @@ It comes with **ready-to-use API**, **Entity Framework Core**, **JWT Authenticat
 - **DevOps (optional)**: Docker (SQL Server container)
 
 ## Project Structure
-
+```bash
 /backend
 │
 ├── src
@@ -47,18 +47,8 @@ It comes with **ready-to-use API**, **Entity Framework Core**, **JWT Authenticat
 │   └── IntegrationTests/                 # API/integration tests
 │
 └── README.md
-
+```
 ## Getting Started
-
-### Backend
-```bash
-cd backend
-dotnet restore
-dotnet build
-# Create DB (adjust ConnectionStrings in appsettings.Development.json)
-dotnet ef database update -p src/Infrastructure -s src/WebApi
-dotnet run --project src/WebApi/WebApi.csproj
-# Swagger available at: http://localhost:5021/swagger
 
 Frontend
 
@@ -73,11 +63,7 @@ dotnet user-secrets set "Jwt:Key" "<min. 32 chars>" -p backend/src/WebApi
 
 Never commit secrets to the repository.
 
-License
-MIT 
 
-
-## 3) `backend/README.md`
 # Backend (.NET 9)
 
 REST API built with ASP.NET Core, **Entity Framework Core**, **Identity + JWT**, and **Swagger**, following a layered architecture (Domain / Application / Infrastructure / WebApi).
@@ -90,7 +76,7 @@ REST API built with ASP.NET Core, **Entity Framework Core**, **Identity + JWT**,
 - Docker (SQL Server) — optional
 
 ## Structure
-
+```bash
 /frontend
 │
 ├── src
@@ -116,18 +102,18 @@ REST API built with ASP.NET Core, **Entity Framework Core**, **Identity + JWT**,
 ├── angular.json
 ├── package.json
 └── README.md
-
+```
 
 ## Configuration
-
+```bash
 **ConnectionStrings** (local dev, SQLEXPRESS):
 ```json
 "ConnectionStrings": {
   "Default": "Server=DESKTOP-XXXXX\\SQLEXPRESS;Database=MyDatabase;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 JWT (store with User Secrets in dev):
-
-
+```
+```bash
 "Jwt": {
   "Key": "super_secret_dev_key_at_least_32_chars_long_!!!",
   "Issuer": "NetAngularStarter",
@@ -135,36 +121,37 @@ JWT (store with User Secrets in dev):
   "AccessTokenMinutes": 15,
   "RefreshTokenDays": 7
 }
-
-Commands
+```
+###Commands
+```bash
 
 # Restore & build
 dotnet restore
 dotnet build
-
+```
 # Migrations (DbContext is in Infrastructure)
+```bash
+
 dotnet ef migrations add Initial -p src/Infrastructure -s src/WebApi
 dotnet ef database update -p src/Infrastructure -s src/WebApi
-
+```
 # Run
+```bash
+
 dotnet run --project src/WebApi/WebApi.csproj
 # Swagger: http://localhost:5021/swagger
-
+```
 Main Endpoints
+```bash
+
 POST /api/auth/register – register user & return JWT
-
 POST /api/auth/login – authenticate & return JWT
-
 GET /api/projects – list projects (public or protected)
-
 POST /api/projects – create project (protected)
+```
 Use the Authorize button in Swagger to paste your JWT token.
 
 
----
-
-## 4) `frontend/README.md`
-```markdown
 # Frontend (Angular)
 
 Angular frontend consuming the backend API, with **login/registration**, **JWT interceptor**, **guards**, and a simple **Projects CRUD**.
@@ -180,26 +167,22 @@ Angular frontend consuming the backend API, with **login/registration**, **JWT i
 npm install
 npm start
 # http://localhost:4200
-
+```
 Configuration
 Edit src/environments/environment.ts:
 
-
+```bash
 export const environment = {
   apiBaseUrl: 'http://localhost:5021'
 };
+```
 
-Features
+###Features
 Login / Registration pages
-
 Stores JWT in localStorage
-
 Interceptor adds Authorization: Bearer <token> to requests
-
 Guard protects private routes
-
 Simple CRUD for Projects
-
 
 ---
 
@@ -214,3 +197,4 @@ git commit -m "chore: initial fullstack boilerplate (.NET 9 + Angular 17)"
 git branch -M main
 git remote add origin https://github.com/<your-username>/net-angular-starter.git
 git push -u origin main
+```
