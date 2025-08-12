@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Se quiser, só utilities do core aqui */
+@layer components {
+  .container { @apply mx-auto max-w-5xl px-4; } /* OK: só Tailwind core */
+}
+
+/* Não use @apply com: input, input-bordered, btn, card, bg-base-100, etc.
+   Use essas classes diretamente no template. */
